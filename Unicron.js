@@ -2,7 +2,7 @@
 //import { HttpAdapter } from '../js-data-http/src/index.js' // js-data 3.0
 import { UnicronEventSystem } from "decepticons/UnicronEventSystem.js"
 import { UnicronWeapons } from "decepticons/UnicronWeapons.js"
-import { UnicronDAO } from "decepticons/UnicronDAO.js"
+import { UnicronLocalPersistenceLayer } from "decepticons/UnicronLocalPersistenceLayer.js"
 import { UnicronMessagingClient } from "decepticons/UnicronMessagingClient.js"
 import { UnicronSessionSystem } from "decepticons/UnicronSessionSystem.js"
 import { UnicronBasicComponent } from "decepticons/UnicronBasicComponent.js"
@@ -46,9 +46,9 @@ export class Unicron extends UnicronWeapons {
         const self = this;
         self.events.trigger('onApplicationStart');
 
-        window.UnicronDao = new UnicronDAO(this);
-        window.UnicronDao.turnDatabaseOn();
+        window.UnicronLocalPersistenceLayer = new UnicronLocalPersistenceLayer(this);
 
+        console.log(window.UnicronLocalPersistenceLayer);
 
         self.session = new UnicronSessionSystem();
         self.events.trigger('onSessionStart');        
