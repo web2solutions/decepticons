@@ -5,7 +5,9 @@ export class UnicronMessagingClient {
     constructor(entity) {
         this.pubsub = new UnicronPubSub();
         this.entity = entity;
-        this.topic = entity.topic || config.topic_data_change_local;
+        
+
+        this.topic = entity.topic || config.topic_main;
 
         //this.listener = this._listener.bind( this.entity );
 
@@ -31,7 +33,8 @@ export class UnicronMessagingClient {
             this._listener = newFunction.bind(this.entity);
 
         this.pubsub.unsubscribe(this.subscriber.id);
-        this.pubsub.subscribe(this.topic, this._listener, this.entity);
+
+        this._subscribe();
     }
     _subscribe() {
         //console.log( 'XXXXXXXXXX UnicronMessagingClient _subscribe' );

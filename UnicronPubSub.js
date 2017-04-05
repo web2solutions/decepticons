@@ -17,6 +17,8 @@ export class UnicronPubSub {
         /**
          * mandatory topics to register
          */
+        this._registerTopic(config.topic_main);
+        this._registerTopic(config.topic_data_change);
         this._registerTopic(config.topic_data_change_local);
         this._registerTopic(config.topic_data_change_remote);
     }
@@ -35,7 +37,7 @@ export class UnicronPubSub {
     }
     _compose(message, topic) {
         let composed_message = null,
-            validEvents = ['create', 'update', 'delete', 'list'];
+            validEvents = ['create', 'update', 'delete', 'list', 'reject'];
 
         if (typeof message === 'undefined')
             throw new Error('Can not compose without a message');
@@ -51,7 +53,7 @@ export class UnicronPubSub {
             collection: message.collection,
             model: message.model,
             data: message.data,
-            datetime: (new Date().getTime()),
+            datetime: new Date().toISOString(),
             to: 'server', // client, server,
             from: message.from,
             topic: topic // 'data.change.remote', 'data.change.local'
