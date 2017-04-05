@@ -2,7 +2,6 @@ import { config } from "decepticons/config.js"
 
 //import { JSData, DataStore } from "../js-data/src/index.js" // js-data 3.0
 //import { HttpAdapter } from '../js-data-http/src/index.js' // js-data 3.0
-import { default as Schemator } from "js-data-schema/lib/index.js"
 
 import { UnicronMessagingClient } from "decepticons/UnicronMessagingClient.js"
 
@@ -13,10 +12,7 @@ import { UnicronDataStoreAPI } from "decepticons/UnicronDataStoreAPI.js"
 export class UnicronRemotePersistenceLayer extends JSData.DS{
     constructor(app) {
         
-        const adapter = new DSHttpAdapter({
-          suffix: '.json',
-          basePath: 'http://localhost:8081/api/v1'
-        })
+        const adapter = new DSHttpAdapter({ suffix: '.json', basePath: 'http://localhost:8081/api/v1' })
         
         super()
 
@@ -33,13 +29,14 @@ export class UnicronRemotePersistenceLayer extends JSData.DS{
         this.messaging_client.listener = this.listener
 
         this.registerAdapter('http', adapter, {
-            'default': false
+            'default': true,
         })
+
         this.events.trigger('onRemoteDatabaseReady')
 
         this.datastore = {
-            "owners": new UnicronDataStoreAPI(this, "owners", "owner"),
-            "pets": new UnicronDataStoreAPI(this, "pets", "pet")
+            "owner": new UnicronDataStoreAPI(this, "owner", "owner"),
+            "pet": new UnicronDataStoreAPI(this, "pet", "pet")
         }
 
         this.app.remote_datastore = this.datastore

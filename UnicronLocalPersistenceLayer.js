@@ -3,7 +3,6 @@ import { config } from "decepticons/config.js"
 //import { JSData, DataStore } from "../js-data/src/index.js" // js-data 3.0
 //import { HttpAdapter } from '../js-data-http/src/index.js' // js-data 3.0
 
-
 import { UnicronMessagingClient } from "decepticons/UnicronMessagingClient.js"
 
 import { UnicronEventSystem } from "decepticons/UnicronEventSystem.js"
@@ -12,6 +11,7 @@ import { UnicronDataStoreAPI } from "decepticons/UnicronDataStoreAPI.js"
 
 export class UnicronLocalPersistenceLayer extends JSData.DS{
     constructor(app) {
+
         const adapter = new DSLocalForageAdapter()
         
         super()
@@ -28,15 +28,15 @@ export class UnicronLocalPersistenceLayer extends JSData.DS{
         this.messaging_client = new UnicronMessagingClient(this)
         this.messaging_client.listener = this.listener
 
-        this.registerAdapter('http', adapter, {
-            'default': false
+        this.registerAdapter('lf', adapter, {
+            'default': true
         })
 
         this.events.trigger('onLocalDatabaseReady')
 
         this.datastore = {
-            "owners": new UnicronDataStoreAPI(this, "owners", "owner"),
-            "pets": new UnicronDataStoreAPI(this, "pets", "pet")
+            "owner": new UnicronDataStoreAPI(this, "owner", "owner"),
+            "pet": new UnicronDataStoreAPI(this, "pet", "pet")
         }
 
         this.app.datastore = this.datastore

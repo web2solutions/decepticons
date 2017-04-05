@@ -26,8 +26,9 @@ export class UnicronDataStoreAPI {
                 minLength: 5
             }
         }*/
-
-        this.collection = this.PersistenceLayer.defineResource( new config.collections[ this.name ]( ) )
+        const rObj = new config.collections[ this.name ]( )
+        console.log( rObj );
+        this.collection = this.PersistenceLayer.defineResource( rObj )
     }
     bind() {}
     sync() {}
@@ -61,7 +62,7 @@ export class UnicronDataStoreAPI {
         const self = this,
             model = new config.models[ this.modelName ]( record ? record : {} )
             //model = new UnicronBaseModel( record ? record : {} ) // replace by owner model
-        console.log( model )
+        //console.log( model )
         return self.collection.create( model )
     }
     update() {}

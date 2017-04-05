@@ -1,5 +1,5 @@
 
-import { app_config } from "decepticons/config.js"
+import { config as app_config } from "decepticons/config.js"
 import { UnicronEventSystem } from "decepticons/UnicronEventSystem.js"
 import { UnicronWeapons } from "decepticons/UnicronWeapons.js"
 import { UnicronLocalPersistenceLayer } from "decepticons/UnicronLocalPersistenceLayer.js"
@@ -23,10 +23,10 @@ export class Unicron extends UnicronWeapons {
         self.famd = null
         this.famdURI = config.famd
 
-        this.environment = 'dev'
+        this.environment = config.environment
         
         // is this an offline application?
-        this.offline_application = true
+        this.offline_application = config.offline_application
 
         this.app = app || this
         this.root = root || document.body

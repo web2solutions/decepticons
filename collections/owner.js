@@ -1,7 +1,19 @@
-export class UnicronBaseDataCollection {
+
+import { UnicronBaseDataCollection }  from "decepticons/UnicronBaseDataCollection.js"
+
+// generated via YO
+export class ownerDataCollection extends UnicronBaseDataCollection {
     constructor() {
-        this.name = "basec_ollection";
-        this.relations = {};
+        super();
+        this.name = "owner";
+        this.relations = {
+            "hasMany": {
+                "pet": {
+                    "localField": "pet",
+                    "foreignKey": "ownerId"
+                }
+            }
+        };
     }
     afterCreate() {
         console.log('afterCreate')
