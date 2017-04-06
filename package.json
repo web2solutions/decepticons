@@ -1,6 +1,6 @@
 {
   "name": "decepticons",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Single page applications foundation",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/web2solucoes/decepticons.git"
+    "url": "git+ssh://git@github.com/web2solutions/decepticons.git"
   },
   "keywords": [
     "SPA",
@@ -18,9 +18,9 @@
   "author": "Eduardo Almeida",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/web2solucoes/decepticons/issues"
+    "url": "https://github.com/web2solutions/decepticons/issues"
   },
-  "homepage": "https://github.com/web2solucoes/decepticons#readme",
+  "homepage": "https://github.com/web2solutions/decepticons#readme",
   "devDependencies": {},
   "dependencies": {}
 }
