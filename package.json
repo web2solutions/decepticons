@@ -1,6 +1,6 @@
 {
   "name": "decepticons",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Single page applications foundation",
   "main": "index.js",
   "scripts": {

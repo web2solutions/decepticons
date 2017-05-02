@@ -8,7 +8,7 @@ Single page applications foundation
 
 See also:
 
-- [SDK](https://github.com/dhtmlx/unicron-sdk) to begin creating an application
+- [SDK](https://github.com/web2solutions/unicron-sdk) to begin creating an application
 - [Unicron-FAMDS](https://github.com/web2solutions/Unicron-FAMD)
 
 
